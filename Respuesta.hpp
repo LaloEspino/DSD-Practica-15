@@ -9,6 +9,7 @@
 #define Respuesta_hpp
 
 #include <stdio.h>
+#include "SocketDatagrama.h"
 
 class Respuesta{
 public:
