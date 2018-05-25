@@ -6,6 +6,8 @@
 //
 
 #include "Respuesta.hpp"
+#include "SocketDatagrama.h"
+#include "mensaje.hpp"
 
 Respuesta::Respuesta(int pl)
 {
@@ -14,17 +16,17 @@ Respuesta::Respuesta(int pl)
 }
 struct mensaje *Respuesta::getRequest(void)
 {
-	int size = sizeof(struct mensaje);
+	const int size = sizeof(struct mensaje);
 	PaqueteDatagrama pack(size);
-	socketlocal.recibe(pack);
+	socketlocal->recibe(pack);
 
 	struct mensaje msg;
 
-	memcpy(msg, pack.obtieneDatos(), sizeof(struct mensaje));
+	memcpy(&msg, pack.obtieneDatos(), sizeof(struct mensaje));
 
 	cout<<msg.operationId<<endl;
 
-	return msg;
+	return &msg;
 }
 
 
