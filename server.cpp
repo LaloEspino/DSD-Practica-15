@@ -13,8 +13,13 @@ using namespace std;
 
 int main() {
 
-    Respuesta res(7300);
-    res.getRequest();
+    Respuesta res(9090);
+    
+    while (true) {
+        cout << "Esperando conexión... 🙄" << endl;
+        res.getRequest();
+        cout << "¡Ya conecto! 🤓" << endl;
+    }
 
     return 0;
 }

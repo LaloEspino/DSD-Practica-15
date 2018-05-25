@@ -14,7 +14,7 @@ int main() {
     
     Solicitud sol;
     
-    char IP[] = "localhost";
+    char IP[] = "10.100.65.246";
     char cadena[] = "Victor Boom";
     int invierteCadena = 1;
     
