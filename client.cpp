@@ -14,8 +14,8 @@ int main() {
     
     Solicitud sol;
     
-    char IP[] = "10.100.65.246";
-    char cadena[] = "Victor Boom";
+    char IP[] = "10.100.65.232";
+    char cadena[] = "El dani me la chupa";
     int invierteCadena = 1;
     
     char * respuesta = sol.doOperation(IP, 9090, invierteCadena, cadena);

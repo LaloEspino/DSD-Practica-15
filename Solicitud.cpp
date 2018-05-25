@@ -10,13 +10,15 @@
 #include <string.h>
 
 Solicitud::Solicitud() {
-    socketlocal = new SocketDatagrama(0);
+    socketlocal = new SocketDatagrama(9090);
 }
 
 char * Solicitud::doOperation(char *IP, int puerto, int operationId, char *arguments) {
     
     struct mensaje msg;
     unsigned int size = sizeof(struct mensaje);
+    char IPs[] = "10.100.65.246";
+
 
     /* Se pasan los atributos a la estructura msg */
 
@@ -25,21 +27,24 @@ char * Solicitud::doOperation(char *IP, int puerto, int operationId, char *argum
     strcpy(msg.IP, IP);
     msg.puerto = puerto;
     msg.operationId = operationId;
-    memcpy(msg.arguments, arguments, sizeof(char));
+    memcpy(msg.arguments, arguments, strlen(arguments));
 
     /* Se envia la estructura  */
 
 
-
-    PaqueteDatagrama paq((char *)&msg, size, IP, puerto);
+    //Este ya funciona
+    PaqueteDatagrama paq((char *)&msg, size, IPs, puerto);
+    
     socketlocal->envia(paq);
 
     /* Se recibe la respuesta  */
 
-    PaqueteDatagrama paq1(sizeof(char));
+    PaqueteDatagrama paq1(strlen(arguments));
     socketlocal->recibe(paq1);
 
     char * respuesta = (char *)paq1.obtieneDatos();
+
+    // cout << "Respuesta " << respuesta << endl;
 
     return respuesta;
     
