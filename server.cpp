@@ -14,7 +14,7 @@ using namespace std;
 int main() {
 
     Respuesta res(7300);
-
+    res.getRequest();
 
     return 0;
 }

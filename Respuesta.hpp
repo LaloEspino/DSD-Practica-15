@@ -10,6 +10,7 @@
 
 #include <stdio.h>
 #include "SocketDatagrama.h"
+#include "mensaje.hpp"
 
 class Respuesta{
 public:
