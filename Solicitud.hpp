@@ -10,6 +10,7 @@
 
 #include <stdio.h>
 #include "SocketDatagrama.h"
+#include "PaqueteDatagrama.h"
 
 class Solicitud{
 public:
