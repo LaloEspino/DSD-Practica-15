@@ -14,7 +14,8 @@ int main(int argc, char * argv[]) {
     
     Solicitud sol;
     
-    char IP[] = argv[1];
+    char IP[16];
+    strcpy(IP, argv[1]);
     int port = atoi(argv[2]);
     
 //    char IP[] = "10.100.65.232";
