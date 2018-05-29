@@ -14,12 +14,16 @@ int main() {
     
     Solicitud sol;
     
-    char IP[] = "10.100.65.232";
+    char IP[] = "10.100.66.80";
+    int port = 9091;
+    
     char cadena[] = "Eduardo Espino y Victor Estrada";
     int invierteCadena = 1;
     
-    char * respuesta = sol.doOperation(IP, 9090, invierteCadena, cadena);
+    char * respuesta = sol.doOperation(IP, port, invierteCadena, cadena);
     
     cout << respuesta << endl;
+    
+    return 0;
     
 }

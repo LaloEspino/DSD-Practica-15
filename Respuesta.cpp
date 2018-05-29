@@ -37,8 +37,6 @@ struct mensaje *Respuesta::getRequest(void) {
     cout << "msg.OP: " << msg.operationId << endl;
     cout << "msg.AR: " << msg.arguments << endl;
     cout << "****************************" << endl;
-
-    cout << "IP client: " << pack.obtieneDireccion() << endl;
     
     if (msg.operationId == 1) {
         
@@ -48,13 +46,11 @@ struct mensaje *Respuesta::getRequest(void) {
         for (int x = 0, y = longitud - 1; x < longitud; x ++, y --) {
             invertido[x] = msg.arguments[y];
         }
-        invertido[longitud] = '\0';
         
-        cout << "Invertido 🐶: " << invertido << endl;
+        invertido[longitud] = '\0';
         
         strcpy(msg.arguments, invertido);
         
-        cout << "ARGS 🐶: " << msg.arguments << endl;
     }
     
 	return &msg;
@@ -63,12 +59,9 @@ struct mensaje *Respuesta::getRequest(void) {
 
 void Respuesta::sendReply(char *respuesta, char *ipClient, int puertoCliente) {
     
-    cout << "Respuesta 🙁: " << respuesta << endl;
-    
     SocketDatagrama *sck = new SocketDatagrama(puertoCliente);
     
     int size = strlen(respuesta);
-    cout << "Tamaño 📏: " << size << endl;
     
     PaqueteDatagrama paq(respuesta, size, ipClient, puertoCliente);
     sck->envia(paq);

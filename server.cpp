@@ -13,15 +13,17 @@ using namespace std;
 
 int main() {
 
-    Respuesta res(9090);
+    Respuesta res(9091);
 //    struct mensaje msg;
     
     while (true) {
-        cout << "Esperando conexión... 🙄" << endl;
+        cout << endl << "Esperando conexión... 🙄" << endl;
         struct mensaje msg = *res.getRequest();
         
-        cout << "Ya copia argumentos 🤙🏽 :" << msg.arguments << endl;
-        
+        cout << "IP: " << msg.IP << endl;
+        cout << "PT: " << msg.puerto << endl;
+        cout << "AG: " << msg.arguments << endl;
+
         res.sendReply(msg.arguments, msg.IP, msg.puerto);
 
     }

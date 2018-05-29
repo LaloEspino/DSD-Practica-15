@@ -10,41 +10,47 @@
 #include <string.h>
 
 Solicitud::Solicitud() {
-    socketlocal = new SocketDatagrama(9090);
+    socketlocal = new SocketDatagrama(8080);
+    cout << "Se creo socket 🙂" << endl;
 }
 
 char * Solicitud::doOperation(char *IP, int puerto, int operationId, char *arguments) {
     
     struct mensaje msg;
     unsigned int size = sizeof(struct mensaje);
-    char IPs[] = "10.100.65.246";
-
 
     /* Se pasan los atributos a la estructura msg */
 
     msg.messageType = 0;
     msg.requestId = 0;
     strcpy(msg.IP, IP);
-    msg.puerto = puerto;
+    msg.puerto = 8080;
     msg.operationId = operationId;
     memcpy(msg.arguments, arguments, strlen(arguments));
+    
+    cout << "Se copiaron los argumentos a la estructura 📩" << endl;
 
     /* Se envia la estructura  */
 
-
-    //Este ya funciona
-    PaqueteDatagrama paq((char *)&msg, size, IPs, puerto);
+    PaqueteDatagrama paq((char *)&msg, size, IP, puerto);
+    
+    cout << "Se crea el paquete 📦" << endl;
     
     socketlocal->envia(paq);
+    
+    cout << "Se envia el paquete 🛫" << endl;
 
     /* Se recibe la respuesta  */
 
     PaqueteDatagrama paq1(strlen(arguments));
+    
+    cout << "Se crea el paquete 📦" << endl;
+
     socketlocal->recibe(paq1);
+    
+    cout << "Recibe paquete 🛬" << endl;
 
     char * respuesta = (char *)paq1.obtieneDatos();
-
-    // cout << "Respuesta " << respuesta << endl;
 
     return respuesta;
     
