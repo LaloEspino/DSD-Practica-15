@@ -7,19 +7,22 @@
 
 #include "Solicitud.hpp"
 #include <iostream>
+#include <stdio.h>      /* printf, fgets */
+#include <stdlib.h>     /* atoi */
 
 using namespace std;
 
 int main(int argc, char * argv[]) {
     
-    Solicitud sol;
+    if (argc < 1) {
+        return 1;
+    }
     
+    Solicitud sol;
+
     char IP[16];
     strcpy(IP, argv[1]);
     int port = atoi(argv[2]);
-    
-//    char IP[] = "10.100.65.232";
-//    int port = 9090;
 
     char cadena[] = "Eduardo Espino y Victor Estrada";
     int invierteCadena = 1;
