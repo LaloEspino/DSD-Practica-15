@@ -10,7 +10,7 @@
 #include <string.h>
 
 Solicitud::Solicitud() {
-    socketlocal = new SocketDatagrama(8080);
+    socketlocal = new SocketDatagrama(9091);
     cout << "Se creo socket 🙂" << endl;
 }
 
@@ -24,7 +24,7 @@ char * Solicitud::doOperation(char *IP, int puerto, int operationId, char *argum
     msg.messageType = 0;
     msg.requestId = 0;
     strcpy(msg.IP, IP);
-    msg.puerto = 8080;
+    msg.puerto = 9091;
     msg.operationId = operationId;
     memcpy(msg.arguments, arguments, strlen(arguments));
     
