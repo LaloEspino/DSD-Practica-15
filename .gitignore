@@ -6,4 +6,8 @@
 
 server
 client
-*.o
+
+PaqueteDatagrama.o
+Respuesta.o
+SocketDatagrama.o
+Solicitud.o

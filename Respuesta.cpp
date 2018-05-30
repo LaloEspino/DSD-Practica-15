@@ -29,7 +29,6 @@ struct mensaje *Respuesta::getRequest(void) {
     memcpy(&msg, pack.obtieneDatos(), size);
     
     strcpy(msg.IP, pack.obtieneDireccion());
-    cout << "PUERTO CLIENTE: " << pack.obtienePuerto() << endl;
 
     // Imprime valores recibidos
     cout << "********** Values **********" << endl;

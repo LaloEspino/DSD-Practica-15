@@ -23,8 +23,8 @@ int main() {
         cout << endl << "Esperando conexión... 🙄" << endl;
         struct mensaje msg = *res.getRequest();
         
-//        int longitud = strlen(msg.arguments);
-//        char invertido[longitud];
+        int longitud = strlen(msg.arguments);
+        char invertido[longitud];
         
         /* Se realiza la operación según la operación solicitada */
         
@@ -32,16 +32,16 @@ int main() {
             case 1:
                 /* Invierte cadena */
 
-//                longitud = strlen(msg.arguments);
-//                invertido[longitud];
-//
-//                for (int x = 0, y = longitud - 1; x < longitud; x ++, y --) {
-//                    invertido[x] = msg.arguments[y];
-//                }
-//
-//                invertido[longitud] = '\0';
-//
-//                strcpy(msg.arguments, invertido);
+                longitud = strlen(msg.arguments);
+                invertido[longitud];
+
+                for (int x = 0, y = longitud - 1; x < longitud; x ++, y --) {
+                    invertido[x] = msg.arguments[y];
+                }
+
+                invertido[longitud] = '\0';
+
+                strcpy(msg.arguments, invertido);
                 
                 /* Invierte cadena */
                 
