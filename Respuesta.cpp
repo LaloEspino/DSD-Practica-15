@@ -27,6 +27,9 @@ struct mensaje *Respuesta::getRequest(void) {
     
     // Copia los datos recibidos a una estructura
     memcpy(&msg, pack.obtieneDatos(), size);
+    
+    strcpy(msg.IP, pack.obtieneDireccion());
+    cout << "PUERTO CLIENTE: " << pack.obtienePuerto() << endl;
 
     // Imprime valores recibidos
     cout << "********** Values **********" << endl;
@@ -37,22 +40,7 @@ struct mensaje *Respuesta::getRequest(void) {
     cout << "msg.OP: " << msg.operationId << endl;
     cout << "msg.AR: " << msg.arguments << endl;
     cout << "****************************" << endl;
-    
-    if (msg.operationId == 1) {
         
-        int longitud = strlen(msg.arguments);
-        char invertido[longitud];
-
-        for (int x = 0, y = longitud - 1; x < longitud; x ++, y --) {
-            invertido[x] = msg.arguments[y];
-        }
-        
-        invertido[longitud] = '\0';
-        
-        strcpy(msg.arguments, invertido);
-        
-    }
-    
 	return &msg;
 }
 
